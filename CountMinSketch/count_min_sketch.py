@@ -32,7 +32,7 @@ class CountMinSketch:
             item: The item to add.
             count (int): The number of occurrences of the item.
         """
-        indexes = self._get_hashed_indexes(item)
+        indexes = self.__get_hashed_indexes(item)
         for i in range(self.hash_functions):
             self.matrix[i][indexes[i]] += count
 
@@ -50,7 +50,7 @@ class CountMinSketch:
         Returns:
             int: An estimate of the frequency of the item.
         """
-        indexes = self._get_hashed_indexes(item)
+        indexes = self.__get_hashed_indexes(item)
         minimum = self.matrix[0][indexes[0]]
         for i in range(1, len(indexes)):
             tmp = self.matrix[i][indexes[i]]
@@ -59,7 +59,7 @@ class CountMinSketch:
         return minimum
     
 
-    def _get_hashed_indexes(self, item):
+    def __get_hashed_indexes(self, item):
         """
         Generates hashed indexes for the given item.
 

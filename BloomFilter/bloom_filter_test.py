@@ -1,6 +1,5 @@
 from bloom_filter import BloomFilter
 
-
 bit_array_size = 10
 hash_functions_count = 2
 

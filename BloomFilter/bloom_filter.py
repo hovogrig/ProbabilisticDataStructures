@@ -21,7 +21,7 @@ class BloomFilter:
         Parameters:
             item: The item to add.
         """
-        indexes = self._get_hashed_indexes(item)
+        indexes = self.__get_hashed_indexes(item)
         for i in range(self.hash_functions_count):
             self.array[indexes[i]] = 1  # Set the corresponding bits to 1
 
@@ -39,14 +39,14 @@ class BloomFilter:
         Returns:
             bool: True if the item is possibly in the Bloom Filter, False otherwise.
         """
-        indexes = self._get_hashed_indexes(item)
+        indexes = self.__get_hashed_indexes(item)
         for i in range(self.hash_functions_count):
             if self.array[indexes[i]] == 0:
                 return False  # If any bit is 0, the item is definitely not in the set
         return True  # Otherwise, the item might be in the set
 
 
-    def _get_hashed_indexes(self, item):
+    def __get_hashed_indexes(self, item):
         """
         Generates hashed indexes for the given item.
 
